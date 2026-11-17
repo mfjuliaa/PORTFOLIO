@@ -10,12 +10,7 @@ Olá! Este repositório reúne os meus projetos de análise de dados. Cada proje
 
 ## Sobre mim
 
-- Nome: _(preencha)_
-- LinkedIn: _(preencha)_
-- E-mail: _(preencha)_
+- Nome: Júlia Maria Francisco
+- LinkedIn: https://www.linkedin.com/in/julia-maria-francisco-984061255?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
+- E-mail: juliamariafrancisco3@gmail.com
 
-## Como adicionar um novo projeto
-
-1. Crie uma nova pasta dentro de `PORTFOLIO/` com o nome do projeto, em minúsculas e com hifens (ex.: `analise-churn-telecom`).
-2. Copie a estrutura da pasta `campanha-marketing-ifood` como modelo.
-3. Adicione o projeto à tabela acima.
