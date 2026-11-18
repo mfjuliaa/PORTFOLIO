@@ -1,79 +1,128 @@
 # Análise da Campanha de Marketing do iFood
 
-## 1. Problema de negócio
+Projeto de análise de dados desenvolvido com **Excel** (tratamento e exploração da base) e **Looker Studio** (dashboard e visualizações).
 
-_(Descreva com as suas palavras o contexto: o time de marketing faz campanhas recorrentes e precisa entender quais perfis de clientes geram mais faturamento, para direcionar melhor as próximas ações.)_
+# Problema de negócio
 
-**Pergunta aberta:** Como aumentar o resultado da próxima campanha de marketing?
+O iFood é o maior aplicativo de delivery de comida do Brasil e está presente em mais de mil cidades. Manter os clientes engajados é essencial para o crescimento da empresa e para que ela continue na liderança do mercado.
 
-**Pergunta fechada:** Quais são as características dos clientes que mais gastaram na campanha?
+Neste projeto, simulei o trabalho de uma pessoa analista de dados dentro dessa empresa. Recebi uma base de amostra com informações dos clientes e de como eles reagiram a uma campanha de marketing. O desafio era entender os dados, enxergar oportunidades de negócio e sugerir ações baseadas em dados para melhorar os resultados das próximas campanhas.
 
-## 2. Premissas
+**Meu objetivo:** fazer uma análise descritiva do comportamento dos clientes para descobrir quais características estão associadas a um maior gasto, ajudando a empresa a lucrar mais na próxima campanha.
 
-- _(Período da campanha)_
-- _(Tratamento de cupons)_
-- _(Escopo de produtos considerados)_
+# Contexto
 
-## 3. Estratégia da solução (método Fato-Dimensão)
+O time de marketing do iFood faz campanhas com frequência para aumentar o faturamento. Mas, para isso funcionar bem, é preciso entender quais ações deram resultado e quais não deram, de modo a repetir o que funcionou e corrigir o que não funcionou.
 
-**Fato:** `Gasto-Clientes` (faturamento por cliente na campanha).
+É nesse ponto que a análise de dados entra: coletar as informações, analisá-las e transformá-las em insights que o time de negócio consiga usar.
 
-**Dimensões:**
+# Premissas da análise
 
-| Dimensão | Atributos |
-| -------- | --------- |
-| Cliente | Salário, idade, faixa etária, estado civil, formação, crianças e adolescentes em casa, recência |
-| Produto | Quantidade por categoria (vinhos, frutas, carnes, peixes, doces, premium) |
-| Comportamento de compra | Total de compras, compras web, compras em loja, visitas ao site |
-| Comportamento de marketing | Reclamações |
+1. A campanha analisada aconteceu entre **15 e 30 de janeiro de 2025**.
+2. Todas as compras feitas com cupom foram **removidas** da base.
+3. Foram considerados apenas os **produtos do catálogo da campanha**.
 
-## 4. Hipóteses analíticas
+# Estratégia da solução
 
-| # | Hipótese | Priorizada? | Resultado |
-| - | -------- | ----------- | --------- |
-| 1 | _(ex.: clientes abaixo de 30 anos gastam mais)_ | | |
-| 2 | _(ex.: clientes solteiros gastam menos)_ | | |
-| 3 | _(ex.: clientes com filhos em casa compram mais)_ | | |
+Para organizar o raciocínio, usei o método **Fato-Dimensão**: primeiro defino o que quero medir (o fato) e depois as características que ajudam a explicar essa medida (as dimensões).
 
-**Critérios de priorização:** dados disponíveis e insights acionáveis.
+## Passo 1: Resumir o contexto em uma pergunta aberta
 
-## 5. Insights
+Uma pergunta aberta é uma demanda ampla, com várias soluções possíveis. Cabe a quem analisa avaliar as alternativas e escolher a que traz mais retorno com menos esforço. A pergunta definida foi:
 
-_(Insira aqui os gráficos da pasta `img/` e comente cada um.)_
+**Como aumentar o resultado da próxima campanha de marketing?**
 
-## 6. Resultados e recomendações
+## Passo 2: Transformar a pergunta aberta em fechada
 
-_(Qual foi o melhor e o pior segmento? O que o marketing deve fazer na próxima campanha?)_
+Uma pergunta fechada é objetiva e já indica exatamente o que precisa ser analisado, normalmente escolhendo um caminho entre todos os possíveis. A pergunta fechada definida foi:
 
-## 7. Próximos passos
+**Quais são as características dos clientes que mais gastaram na campanha de marketing?**
 
-- Explorar mais características dos clientes
-- Automatizar a coleta e a análise
-- Segmentar clientes em grupos (clusterização)
-- Montar um dashboard de acompanhamento
+## Passo 3: Definir a coluna fato
 
-## 8. Estrutura do projeto
+O fato é a coluna que está no centro da análise. Aqui, é a coluna **Gasto-Clientes**, que mostra quanto cada cliente gastou durante a campanha. Ela foi escolhida porque o problema de negócio é aumentar o faturamento.
 
-```
-campanha-marketing-ifood/
-├── data/
-│   ├── raw/          # dados originais (não alterar)
-│   └── processed/    # dados tratados
-├── notebooks/        # análises em Jupyter
-├── img/              # gráficos usados no README
-├── requirements.txt
-└── README.md
-```
+## Passo 4: Identificar as dimensões
 
-## 9. Como reproduzir
+Agrupei as colunas da base em quatro dimensões, que trazem mais detalhes sobre o fato:
 
-```bash
-python -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-jupyter notebook notebooks/
-```
+| Dimensão | Colunas |
+| -------- | ------- |
+| **Cliente** | Salário, Idade, Faixa-Etária, Dias-Cliente, Estado-Civil, Formação, Crianças-Casa, Adolescentes-Casa, Recência |
+| **Produto** | Qtde-Vinhos, Qtde-Frutas, Qtde-Carnes, Qtde-Peixes, Qtde-Doces, Qtde-Premium |
+| **Comportamento de compra** | Qtde-Compras, Qtde-Compras-Web, Qtde-Compras-Loja, Visitas-Site-Mes |
+| **Comportamento de marketing** | Reclamações |
 
-## 10. Dashboard
+## Passo 5: Hipóteses analíticas
 
-_(Cole aqui o link do Looker Studio, se for criar um.)_
+Cada hipótese junta o **fato** (gasto) com uma **dimensão** e uma **comparação** (maior, menor ou igual).
+
+**Cliente – Idade**
+1. Clientes com menos de 30 anos gastam mais do que as outras faixas etárias.
+2. Clientes entre 20 e 30 anos gastam mais do que as outras faixas etárias.
+3. Clientes com mais de 30 anos gastam mais do que as outras faixas etárias.
+
+**Cliente – Estado civil**
+
+4. Clientes solteiros gastam mais do que os outros grupos.
+5. Clientes solteiros gastam menos do que os outros grupos.
+6. Clientes casados gastam mais do que os outros grupos.
+
+**Cliente – Estado civil + Idade**
+
+7. Clientes solteiros com mais de 30 anos gastam mais do que clientes casados da mesma faixa de idade.
+
+**Cliente – Formação**
+
+8. Clientes com formação avançada (doutorado) gastam mais do que clientes com ensino fundamental.
+9. Clientes com salários maiores têm maior nível de escolaridade.
+
+## Passo 6: Critérios de priorização
+
+Para decidir quais hipóteses analisar primeiro, usei dois critérios:
+
+- **Dados disponíveis:** a base precisa ter as informações necessárias para testar a hipótese.
+- **Insight acionável:** o resultado precisa permitir uma ação concreta do marketing.
+
+## Passo 7: Hipóteses priorizadas
+
+1. Clientes com menos de 30 anos gastam mais com produtos do iFood do que as outras faixas etárias.
+2. Clientes solteiros gastam menos do que os outros grupos.
+3. Clientes solteiros com menos de 30 anos gastam mais do que as outras faixas etárias.
+4. Clientes com crianças em casa compram mais pelo iFood.
+5. Clientes que compram mais carne também compram mais vinho.
+
+
+### Visão geral da campanha
+Panorama do faturamento e do desempenho geral da campanha.
+
+### Visão dos clientes
+Como o gasto varia de acordo com idade, estado civil, formação e composição familiar.
+
+### Conclusão: resultado por cliente
+Cruzamento das características que formam os melhores e os piores segmentos.
+
+### Conclusão: visão por produto
+Quais categorias de produto mais contribuíram para o faturamento.
+
+# Resultados
+
+**Melhor segmento:** clientes casados, com idade entre 41 e 50 anos, sem filhos em casa e com graduação completa.
+
+**Piores segmentos:** clientes viúvos de todas as faixas etárias, além de clientes com menos de 30 anos (de qualquer estado civil) que têm duas ou mais crianças em casa e apenas o ensino fundamental.
+
+**Recomendação:** para aumentar o lucro da próxima campanha, o marketing deve direcionar as ações para o melhor segmento e reduzir o investimento nos demais, principalmente nos de pior desempenho.
+
+# Ferramentas utilizadas
+
+- **Excel:** limpeza, organização e exploração inicial dos dados.
+- **Looker Studio:** construção do dashboard com as visões geral, de clientes e de produto.
+
+# Dashboard completo
+
+<!-- Cole aqui o link do seu dashboard no Looker Studio -->
+
+# Próximos passos
+
+1. Explorar outras características dos clientes.
+2. Automatizar a coleta e a análise para acompanhamento contínuo.
