@@ -6,7 +6,7 @@ Olá! Este repositório reúne os meus projetos de análise de dados. Cada proje
 
 | Projeto | Descrição | Ferramentas |
 | ------- | --------- | ----------- |
-| [Campanha de Marketing iFood](./campanha-marketing-ifood) | Análise de uma campanha de marketing para identificar o perfil de clientes que mais gerou faturamento. | Python, pandas, Looker Studio |
+| [Campanha de Marketing iFood](./campanha-marketing-ifood) | Análise de uma campanha de marketing para identificar o perfil de clientes que mais gerou faturamento. | Excel, Looker Studio |
 
 ## Sobre mim
 
