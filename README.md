@@ -11,6 +11,6 @@ Olá! Este repositório reúne os meus projetos de análise de dados. Cada proje
 ## Sobre mim
 
 - Nome: Júlia Maria Francisco
-- LinkedIn: https://www.linkedin.com/in/julia-maria-francisco-984061255?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
+- LinkedIn: https://l1nk.dev/98fyo60
 - E-mail: juliamariafrancisco3@gmail.com
 
